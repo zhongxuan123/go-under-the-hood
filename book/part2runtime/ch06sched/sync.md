@@ -1,4 +1,4 @@
-# note 与 (rw)mutex
+# 调度器：同步机制
 
 [TOC]
 
@@ -166,6 +166,12 @@ TEXT runtime·osyield(SB),NOSPLIT,$0
 
 ### `unlock`
 
+
+## 总结
+
+TODO:
+
+[返回目录](./readme.md) | [上一节](./preemptive.md) | [下一节 过去、现在与未来](./history.md)
 
 ## 许可
 

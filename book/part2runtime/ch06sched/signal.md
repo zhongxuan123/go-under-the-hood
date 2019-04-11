@@ -2,8 +2,6 @@
 
 [TOC]
 
-
-
 我们已经知道了 Go 运行时调度已 goroutine 的方式调度了所有用户态代码。
 每个 goroutine 都有可能在不同的线程上重新被执行。那么如果用户态的某个
 goroutine 需要接收系统信号，如何才能确保某个线程的信号能够正确的发送到可能在其他线程上执行的监听信号的 goroutine 呢？
@@ -145,7 +143,7 @@ func sigprocmask(how int32, new, old *sigset) {
 func rtsigprocmask(how int32, new, old *sigset, size int32)
 ```
 
-`rtsigprocmask` 在 Linux 上由汇编直接封装 `rt_sigprocmask` 调用 [1]：
+`rtsigprocmask` 在 Linux 上由汇编直接封装 `rt_sigprocmask` 调用 [DIENET, 2017a]：
 
 ```c
 TEXT runtime·rtsigprocmask(SB),NOSPLIT,$0-28
@@ -164,7 +162,7 @@ TEXT runtime·rtsigprocmask(SB),NOSPLIT,$0-28
 注意，`rt_sigprocmask` 只适用于单个线程的调用，多线程上的调用时未定义行为，
 不过初始化阶段的此时还未创建其他线程，因此此调用时安全的。
 
-在 Darwin 上则是通过 `pthread_sigmask` [2] 来完成：
+在 Darwin 上则是通过 `pthread_sigmask` [DIENET, 2017b] 来完成：
 
 ```go
 //go:nosplit
@@ -736,13 +734,15 @@ func oneNewExtraM() {
 当然，信号处理的功能远不止如此，利用此信号机制还可能实现抢占式调度，我们在 [调度器: 协作与抢占](preemptive.md)
 中再来讨论这一机制。
 
+[返回目录](./readme.md) | [上一节](./thread.md) | [下一节 执行栈管理](./stack.md)
+
 ## 进一步阅读的参考文献
 
-3. [Signal(Unix)](https://en.wikipedia.org/wiki/Signal_(IPC))
-2. [sigaltstack - Linux man page](http://man7.org/linux/man-pages/man2/sigaltstack.2.html)
-4. [sigprocmask - Linux man page](https://linux.die.net/man/2/rt_sigprocmask)
-5. [pthread_sigmask - Linux man page](https://linux.die.net/man/3/pthread_sigmask)
-6. Stevens, W. Richard, and Stephen A. Rago. Advanced programming in the UNIX environment. Addison-Wesley, 2013.
+- [WIKI, 2019] [Signal(Unix)](https://en.wikipedia.org/wiki/Signal_(IPC))
+- [MAN7, 2017] [sigaltstack - Linux man page](http://man7.org/linux/man-pages/man2/sigaltstack.2.html)
+- [DIENET, 2017a] [sigprocmask - Linux man page](https://linux.die.net/man/2/rt_sigprocmask)
+- [DIENET, 2017b] [pthread_sigmask - Linux man page](https://linux.die.net/man/3/pthread_sigmask)
+- [STEVENS et al., 1992] Stevens, W. Richard, and Stephen A. Rago. Advanced programming in the UNIX environment. Addison-Wesley, 2013.
 
 ## 许可
 

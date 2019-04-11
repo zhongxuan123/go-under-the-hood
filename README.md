@@ -16,7 +16,7 @@ Go 源码研究 | 当前基于 `go1.12`
 
 <!-- 内存布局？ -->
 
-#### 第二章 并行与并发计算
+#### 第二章 并发与分布式计算
 
 <!-- - [3.1 并发] -->
 
@@ -28,35 +28,35 @@ Go 源码研究 | 当前基于 `go1.12`
 
 #### 第四章 内存管理工程
 
-- 垃圾回收统一理论
+<!-- - 垃圾回收统一理论 -->
 
 <!-- CPU 架构与操作系统? -->
 
 <!-- - [Linux 系统调用]
 - [Plan 9 汇编](book/appendix/asm.md) -->
 
-#### [第五章 Go 程序生命周期](book/part1basic/ch05boot)
+#### [第五章 Go 程序生命周期](book/part1basic/ch05boot/readme.md)
 
-- [程序引导](book/part1basic/ch05boot/boot.md)
-- [初始化概览](book/part1basic/ch05boot/init.md)
-- [主 goroutine](book/part1basic/ch05boot/main.md)
+- [5.1 程序引导](book/part1basic/ch05boot/boot.md)
+- [5.2 初始化概览](book/part1basic/ch05boot/init.md)
+- [5.3 主 goroutine](book/part1basic/ch05boot/main.md)
 
-### [第二部分：运行时机制](book/part2runtime)
+### [第二部分：运行时机制](book/part2runtime/readme.md)
 
-#### [第六章 调度器](book/part2runtime/ch06sched)
+#### [第六章 调度器](book/part2runtime/ch06sched/readme.md)
 
-- [基本结构](book/part2runtime/ch06sched/basic.md)
-- [调度器初始化](book/part2runtime/ch06sched/init.md)
-- [调度循环](book/part2runtime/ch06sched/exec.md)
-- [系统监控](book/part2runtime/ch06sched/sysmon.md)
-- [线程管理](book/part2runtime/ch06sched/thread.md)
-- [信号处理机制](book/part2runtime/ch06sched/signal.md)
-- [执行栈管理](book/part2runtime/ch06sched/stack.md)
-- [协作与抢占](book/part2runtime/ch06sched/preemptive.md)
-- [`note` 与 `mutex`](book/part2runtime/ch06sched/note.md)
-- [过去、现在与未来](book/part2runtime/ch06sched/history.md)
+- [6.1 基本结构](book/part2runtime/ch06sched/basic.md)
+- [6.2 调度器初始化](book/part2runtime/ch06sched/init.md)
+- [6.3 调度循环](book/part2runtime/ch06sched/exec.md)
+- [6.4 系统监控](book/part2runtime/ch06sched/sysmon.md)
+- [6.5 线程管理](book/part2runtime/ch06sched/thread.md)
+- [6.6 信号处理机制](book/part2runtime/ch06sched/signal.md)
+- [6.7 执行栈管理](book/part2runtime/ch06sched/stack.md)
+- [6.8 协作与抢占](book/part2runtime/ch06sched/preemptive.md)
+- [6.9 同步机制](book/part2runtime/ch06sched/sync.md)
+- [6.10 过去、现在与未来](book/part2runtime/ch06sched/history.md)
 
-#### [第七章 内存分配器](book/part2runtime/ch07alloc)
+#### [第七章 内存分配器](book/part2runtime/ch07alloc/readme.md)
 
 - [基本知识](book/part2runtime/ch07alloc/basic.md)
 - [组件](book/part2runtime/ch07alloc/component.md)
@@ -67,7 +67,7 @@ Go 源码研究 | 当前基于 `go1.12`
 - [内存统计](book/part2runtime/ch07alloc/mstats.md)
 - [过去、现在与未来](book/part2runtime/ch07alloc/history.md)
 
-#### [第八章 垃圾回收器](book/part2runtime/ch08GC)
+#### [第八章 垃圾回收器](book/part2runtime/ch08GC/readme.md)
 
 - [基本知识](book/part2runtime/ch08GC/basic.md)
 - [初始化](book/part2runtime/ch08GC/init.md)
@@ -88,12 +88,12 @@ Go 源码研究 | 当前基于 `go1.12`
 
 <!-- - [运行时编程综述](gosrc/runtime/README.md) -->
 
-- [参与运行时的系统调用: Linux](book/part2runtime/ch10abi/syscall-linux.md)
-- [参与运行时的系统调用: Darwin](book/part2runtime/ch10abi/syscall-darwin.md)
+- [参与运行时的系统调用（Linux 篇）](book/part2runtime/ch10abi/syscall-linux.md)
+- [参与运行时的系统调用（Darwin 篇）](book/part2runtime/ch10abi/syscall-darwin.md)
+- [参与运行时的系统调用（WebAssembly 篇）](book/part2runtime/ch10abi/syscall-wasm.md)
 - [cgo](book/part2runtime/ch10abi/cgo.md)
-- [WebAssembly](book/part2runtime/ch10abi/wasm.md)
 
-### [第三部分：编译系统](book/part3compile)
+### [第三部分：编译系统](book/part3compile/readme.md)
 
 #### 第十一章 关键字
 
@@ -117,9 +117,9 @@ Go 源码研究 | 当前基于 `go1.12`
 - [编译后端 SSA](book/part3compile/ch13gc/ssa.md)
 - [过去、现在与未来]
 
-### [第四部分：标准库](book/part4lib)
+### [第四部分：标准库](book/part4lib/readme.md)
 
-#### [第十四章 sync 与 atomic 包](book/part4lib/ch14sync)
+#### [第十四章 sync 与 atomic 包](book/part4lib/ch14sync/readme.md)
 
 - [信号量 sema 机制](book/part4lib/ch14sync/sema.md)
 - [`sync.Pool`](book/part4lib/ch14sync/pool.md)
@@ -130,7 +130,7 @@ Go 源码研究 | 当前基于 `go1.12`
 - [`sync.Cond`](book/part4lib/ch14sync/cond.md)
 - [`sync/atomic.*`](book/part4lib/ch14sync/atomic.md)
 
-#### [第十五章 其他](book/part4lib/ch15other)
+#### [第十五章 其他](book/part4lib/ch15other/readme.md)
 
 - [`syscall.*`](book/part4lib/ch15other/syscall.md)
 - [`os/signal.*`](book/part4lib/ch15other/signal.md)
